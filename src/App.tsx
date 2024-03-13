@@ -1,26 +1,22 @@
-import About from "./components/about";
-import Contact from "./components/contact";
-// import Header from "./components/header";
 import Layout from "./components/layout";
-import News from "./components/news";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import "./styles/styles.scss";
-import Header from "./components/header";
+import Home from "./pages/home";
+import Contact from "./pages/contact";
+import About from "./pages/about";
+import NoMatch from "./pages/noMatch";
 
 const App = () => {
   return (
     <>
-      <Layout>
-        <BrowserRouter>
-          <Routes>
-            <Route path="/" element={<Header />}>
-              <Route path="about" element={<About />} />
-              <Route path="news" element={<News />} />
-              <Route path="contact" element={<Contact />} />
-            </Route>
-          </Routes>
-        </BrowserRouter>
-      </Layout>
+      <Routes>
+        <Route path="/" element={<Layout />}>
+          <Route index element={<Home />} />
+          <Route path="about" element={<About />} />
+          <Route path="contact" element={<Contact />} />
+          <Route path="*" element={<NoMatch />} />
+        </Route>
+      </Routes>
     </>
   );
 };
